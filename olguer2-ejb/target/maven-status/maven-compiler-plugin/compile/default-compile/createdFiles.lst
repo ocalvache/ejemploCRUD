@@ -1,0 +1,16 @@
+com\olguer\entities\Estadios_.class
+com\olguer\controllers\TorneoFacade.class
+com\olguer\entities\Equipos.class
+com\olguer\controllers\JugadoresFacade.class
+com\olguer\entities\Posiciones.class
+com\olguer\entities\Posiciones_.class
+com\olguer\controllers\AbstractFacade.class
+com\olguer\entities\Torneo.class
+com\olguer\controllers\PosicionesFacade.class
+com\olguer\entities\Jugadores_.class
+com\olguer\entities\Estadios.class
+com\olguer\entities\Jugadores.class
+com\olguer\entities\Equipos_.class
+com\olguer\controllers\EstadiosFacade.class
+com\olguer\controllers\EquiposFacade.class
+com\olguer\entities\Torneo_.class

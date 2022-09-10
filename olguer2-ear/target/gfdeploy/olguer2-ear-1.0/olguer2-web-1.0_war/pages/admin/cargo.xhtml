@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/WEB-INF/templates/template.xhtml">
+    <ui:define name="contenidoOCA">
+        <p:growl id="menGen"/>
+        <p:toolbar>
+            <p:toolbarGroup align="left">
+                <h:outputText value="Administración de Equipos"/>
+            </p:toolbarGroup>
+            <p:toolbarGroup align="right">
+                <p:commandButton value="Nuevo" icon="pi pi-plus" process="@this" actionListener="#{equipoBean.resetearFormulario}"
+                                 update=":frmGen:panGriCar :frmGen:datTabCar" />
+                <p:commandButton value="Guardar" icon="pi pi-save" process="@this :frmGen:panGriCar"
+                                 actionListener="#{equipoBean.guardar}" update=":frmGen:menGen :frmGen:datTabCar :frmGen:panGriCar"/>
+                <p:commandButton value="Editar" icon="pi pi-pencil" process="@this" actionListener="#{equipoBean.editar}"
+                                 update=":frmGen:panGriCar :frmGen:menGen"/>
+                <p:commandButton value="Eliminar" icon="pi pi-trash" onclick="PF('diaConEli').show();"/>
+            </p:toolbarGroup>
+        </p:toolbar>
+        <br/>
+        <p:panelGrid id="panGriCar" columns="4" style="width: 100%">
+            <p:outputLabel for="txtNomCar" value="Id"/>
+            <p:inputText id="txtNomCar" value="#{equipoBean.equipo.id}" required="true" maxlength="100"/>
+            <p:outputLabel for="txaDesCar" value="Nombre Equipo"/>
+            <p:inputTextarea id="txaDesCar" value="#{equipoBean.equipo.nombre}" maxlength="300" rows="4"/>
+        </p:panelGrid>
+        <br/>        
+        <p:dataTable  id="datTabCar" value="#{equipoBean.listaEquipos}" var="car" selectionMode="single"
+                      rowKey="#{car.id}" paginator="true" rows="10">
+            <p:ajax event="rowSelect" listener="#{equipoBean.seleccionarFila}"/>
+            <p:column headerText="Id">
+                <h:outputText value="#{car.id}"/>
+            </p:column>
+             <p:column headerText="Nombre">
+                 <h:outputText value="#{car.nombre}"/>
+            </p:column>
+        </p:dataTable>
+        
+        <p:dialog widgetVar="diaConEli" header="Confirmación Eliminación" width="400px">
+            <p:panelGrid id="panGriEli" columns="3" style="width: 100%">
+                <p:outputLabel value="Está seguro de eliminar el cargo?"/>
+                <p:commandButton value="Si"  process="@this" actionListener="#{equipoBean.eliminar}" 
+                                 update=":frmGen:menGen :frmGen:datTabCar :frmGen:panGriCar"
+                                 oncomplete="PF('diaConEli').hide();"/>
+                <p:commandButton value="No" onclick="PF('diaConEli').hide();"/>
+            </p:panelGrid>
+        </p:dialog>
+    </ui:define>
+</ui:composition>
