@@ -6,6 +6,7 @@ package com.olguer.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,12 +20,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author ocalvache
  */
 @Entity
+@XmlRootElement
 @Table(name = "equipos")
 @NamedQueries({
     @NamedQuery(name = "Equipos.findAll", query = "SELECT e FROM Equipos e"),
@@ -65,7 +69,8 @@ public class Equipos implements Serializable {
         this.id = id;
     }
 
-
+    @XmlTransient
+    @JsonbTransient
     public List<Torneo> getTorneoList() {
         return torneoList;
     }
@@ -74,6 +79,8 @@ public class Equipos implements Serializable {
         this.torneoList = torneoList;
     }
 
+    @XmlTransient
+    @JsonbTransient
     public List<Jugadores> getJugadoresList() {
         return jugadoresList;
     }
@@ -114,5 +121,5 @@ public class Equipos implements Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
 }

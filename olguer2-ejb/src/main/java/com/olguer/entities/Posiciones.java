@@ -6,6 +6,7 @@ package com.olguer.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +18,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -58,7 +60,8 @@ public class Posiciones implements Serializable {
         this.id = id;
     }
 
-
+    @XmlTransient
+    @JsonbTransient
     public List<Jugadores> getJugadoresList() {
         return jugadoresList;
     }

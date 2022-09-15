@@ -1,3 +1,6 @@
 beans\LoginBean.class
 util\AbstractManagedBean.class
+ServiciosRS\ApiFutbol.class
+ServiciosWeb\WSEquipo.class
 beans\EquipoBean.class
+ServiciosRS\RSEquipoServicio.class

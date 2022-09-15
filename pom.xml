@@ -66,8 +66,8 @@
         </plugins>
     </build>
     <modules>
-        <module>olguer2-ear</module>
         <module>olguer2-ejb</module>
         <module>olguer2-web</module>
+        <module>olguer2-ear</module>
     </modules>
 </project>
